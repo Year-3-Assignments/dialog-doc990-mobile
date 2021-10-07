@@ -13,7 +13,7 @@ class SignUpScreen1 extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Container(
-        width: size.width * 0.6,
+        width: size.width * 0.8,
         child: Drawer(
           elevation: 0.0,
           child: HomeNavigationMenu(),
@@ -34,7 +34,7 @@ class SignUpScreen1 extends StatelessWidget {
               onPressed: () => _scaffoldKey.currentState.openDrawer(),
               icon: Icon(
                 Icons.notes,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ),

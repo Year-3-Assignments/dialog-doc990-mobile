@@ -1,3 +1,4 @@
+import 'package:dialog_doc990_mobile/constants.dart';
 import 'package:flutter/material.dart';
 
 class RoundedDropDownFeild extends StatefulWidget {
@@ -5,12 +6,14 @@ class RoundedDropDownFeild extends StatefulWidget {
   final String text;
   final bool isRequiredFeild;
   final bool isCountry;
+  final String value;
 
   const RoundedDropDownFeild({
     Key key,
     this.isRequiredFeild,
     this.onChange,
     this.text,
+    this.value,
     this.isCountry,
   }) : super(key: key);
 
@@ -19,6 +22,7 @@ class RoundedDropDownFeild extends StatefulWidget {
         isRequiredFeild: isRequiredFeild,
         onChange: onChange,
         text: text,
+        value: value,
         isCountry: isCountry,
       );
 }
@@ -28,6 +32,7 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
   final String text;
   final bool isRequiredFeild;
   final bool isCountry;
+  final String value;
   bool _isFieldValid;
 
   _RoundedDropDownFeildState({
@@ -35,6 +40,7 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
     this.isRequiredFeild,
     this.onChange,
     this.text,
+    this.value,
     this.isCountry,
   });
 
@@ -49,7 +55,7 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
             text,
             style: TextStyle(
               fontFamily: 'Larsseit',
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.normal,
             ),
             textAlign: TextAlign.left,
@@ -82,8 +88,8 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
                             child: Text(
                               item,
                               style: TextStyle(
-                                fontFamily: 'Larsseit',
-                                fontSize: 20,
+                                fontFamily: FONT_FAMILY_PRIMARY,
+                                fontSize: 18,
                               ),
                             ),
                             value: item,
@@ -93,7 +99,7 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
                     hint: Text(
                       'Select your country',
                       style: TextStyle(
-                        fontFamily: 'Larsseit',
+                        fontFamily: FONT_FAMILY_PRIMARY,
                         fontSize: 20,
                         color: Colors.grey[600],
                       ),
@@ -126,8 +132,8 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
                             child: Text(
                               item,
                               style: TextStyle(
-                                fontFamily: 'Larsseit',
-                                fontSize: 20,
+                                fontFamily: FONT_FAMILY_PRIMARY,
+                                fontSize: 18,
                               ),
                             ),
                             value: item,
@@ -137,8 +143,8 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
                     hint: Text(
                       'Select your title',
                       style: TextStyle(
-                        fontFamily: 'Larsseit',
-                        fontSize: 20,
+                        fontFamily: FONT_FAMILY_PRIMARY,
+                        fontSize: 18,
                         color: Colors.grey[600],
                       ),
                     ),
@@ -153,12 +159,13 @@ class _RoundedDropDownFeildState extends State<RoundedDropDownFeild> {
                   _isFieldValid != null &&
                   !_isFieldValid
               ? Padding(
-                  padding: EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 5),
                   child: Text(
                     text + ' is required!',
                     style: TextStyle(
                       color: Colors.red[800],
-                      fontFamily: 'Larsseit',
+                      fontFamily: FONT_FAMILY_PRIMARY,
+                      fontSize: 12,
                     ),
                   ),
                 )
@@ -185,11 +192,10 @@ class DropDownContainer extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 1),
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 3),
       width: size.width * 0.9,
       decoration: BoxDecoration(
-          color: Colors.grey[300], borderRadius: BorderRadius.circular(30)),
+          color: Colors.grey[300], borderRadius: BorderRadius.circular(8)),
       child: child,
     );
   }

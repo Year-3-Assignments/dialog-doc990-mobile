@@ -13,32 +13,34 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Container(
-        width: size.width * 0.6,
+        width: size.width * 0.8,
         child: Drawer(
           elevation: 0.0,
           child: HomeNavigationMenu(),
         ),
       ),
-      body: Stack(
-        children: <Widget>[
-          SingleChildScrollView(
-            child: Container(
-              child: LoginBackground(
-                child: LoginForm(),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            SingleChildScrollView(
+              child: Container(
+                child: LoginBackground(
+                  child: LoginForm(),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 30, left: 0),
-            child: IconButton(
-              onPressed: () => _scaffoldKey.currentState.openDrawer(),
-              icon: Icon(
-                Icons.notes,
-                color: Colors.white,
+            Padding(
+              padding: EdgeInsets.only(top: 30, left: 0),
+              child: IconButton(
+                onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                icon: Icon(
+                  Icons.notes,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

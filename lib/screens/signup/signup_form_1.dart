@@ -1,9 +1,12 @@
-import 'package:dialog_doc990_mobile/components/rounded_button.dart';
-import 'package:dialog_doc990_mobile/components/rounded_input_field.dart';
+import 'package:dialog_doc990_mobile/components/common/rounded_button.dart';
+import 'package:dialog_doc990_mobile/components/common/rounded_input_field.dart';
+import 'package:dialog_doc990_mobile/constants.dart';
+import 'package:dialog_doc990_mobile/providers/sign_up_provider.dart';
 import 'package:dialog_doc990_mobile/screen_keys.dart';
 import 'package:dialog_doc990_mobile/screens/signup/signup_screen_2.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class SignUpForm1 extends StatefulWidget {
   @override
@@ -11,19 +14,13 @@ class SignUpForm1 extends StatefulWidget {
 }
 
 class _SignUpForm1State extends State<SignUpForm1> {
-  String phoneNumber;
-  String emailAddress;
   GlobalKey<FormState> _signUpFrom1Key =
       GlobalKey<FormState>(debugLabel: '_signFrom1Key');
-  _SignUpForm1State({
-    this.phoneNumber,
-    this.emailAddress,
-  });
 
   void submitAndNavigateTo2ndScreen() {
     if (_signUpFrom1Key.currentState.validate() &&
-        phoneNumber != null &&
-        phoneNumber != null) {
+        context.read<SignUpProvider>().getEmail() != '' &&
+        context.read<SignUpProvider>().getPhoneNumber() != '') {
       Navigator.push(
         context,
         PageTransition(
@@ -40,13 +37,8 @@ class _SignUpForm1State extends State<SignUpForm1> {
 
     return Container(
       key: WidgetKeys.signUpForm1Key,
-      height: size.height * 0.5,
+      height: size.height * 0.6,
       width: size.width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(50.0), topLeft: Radius.circular(50.0)),
-        color: Colors.white,
-      ),
       child: Padding(
         padding: EdgeInsets.only(top: 30, left: 25, right: 25),
         child: Form(
@@ -57,8 +49,8 @@ class _SignUpForm1State extends State<SignUpForm1> {
               Text(
                 'Contact Info',
                 style: TextStyle(
-                  fontFamily: 'Larsseit',
-                  fontSize: 30,
+                  fontFamily: FONT_FAMILY_SECONDARY,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.left,
@@ -71,9 +63,11 @@ class _SignUpForm1State extends State<SignUpForm1> {
                 isPassword: false,
                 isNumber: false,
                 isPhoneNumber: false,
+                icon: Icons.email,
                 text: 'Email Address',
+                value: context.read<SignUpProvider>().getEmail(),
                 onChange: (text) {
-                  emailAddress = text;
+                  context.read<SignUpProvider>().setEmail(text);
                 },
               ),
               RoundedTextFeild(
@@ -81,9 +75,11 @@ class _SignUpForm1State extends State<SignUpForm1> {
                 isPassword: false,
                 isNumber: true,
                 isPhoneNumber: true,
+                icon: Icons.phone,
                 text: 'Your Phone Number',
+                value: context.read<SignUpProvider>().getPhoneNumber(),
                 onChange: (text) {
-                  phoneNumber = text;
+                  context.read<SignUpProvider>().setPhoneNumber(text);
                 },
               ),
               SizedBox(
@@ -92,12 +88,45 @@ class _SignUpForm1State extends State<SignUpForm1> {
               Align(
                 alignment: Alignment.bottomRight,
                 child: RoundedButton(
-                  text: 'NEXT',
+                  text: 'CONTINUE',
+                  color: Color(COLOR_PRIMARY),
+                  textColor: Colors.white,
                   action: submitAndNavigateTo2ndScreen,
                   height: size.height * 0.072,
-                  width: size.width * 0.28,
+                  icon: Icons.navigate_next,
+                  iconSize: 21,
+                  fontSize: 15,
+                  width: size.width,
                 ),
-              )
+              ),
+              SizedBox(
+                height: size.height * 0.025,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already registered?',
+                    style: TextStyle(
+                      fontFamily: FONT_FAMILY_PRIMARY,
+                      fontSize: 16,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      ' Sign In',
+                      style: TextStyle(
+                        fontFamily: FONT_FAMILY_PRIMARY,
+                        fontSize: 16,
+                        color: Color(COLOR_PRIMARY),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),

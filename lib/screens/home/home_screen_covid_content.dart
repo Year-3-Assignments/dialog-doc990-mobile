@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:dialog_doc990_mobile/models/covid_model.dart';
+import 'package:dialog_doc990_mobile/providers/search_doctor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreenCovidContent extends StatefulWidget {
   @override
@@ -16,7 +18,6 @@ Future<CovidInfo> getCovidDetails() async {
 
   if (responseData.statusCode == 200) {
     return CovidInfo.fromJson(jsonDecode(responseData.body)['data']);
-    ;
   } else {
     throw Exception('Failed to load the data');
   }

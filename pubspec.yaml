@@ -18,6 +18,13 @@ dependencies:
   fluttertoast: ^8.0.8
   http: ^0.13.3
   intl: ^0.16.1
+  animated_text_kit: ^4.2.1
+  splashscreen: ^1.2.0
+  animations: ^2.0.1
+  provider: ^5.0.0
+  flutter_local_notifications: ^8.2.0
+  rxdart: ^0.27.1
+  flutter_datetime_picker: ^1.5.1
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +40,9 @@ flutter:
     - family: Larsseit
       fonts:
         - asset: assets/fonts/Larsseit.ttf
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans.ttf
+    - family: SF-Pro
+      fonts:
+        - asset: assets/fonts/SF-Text.ttf

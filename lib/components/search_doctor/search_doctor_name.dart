@@ -1,48 +1,38 @@
+import 'package:dialog_doc990_mobile/constants.dart';
 import 'package:flutter/material.dart';
 
-class RoundedTextFeild extends StatefulWidget {
+class SearchDoctorTextField extends StatefulWidget {
   final ValueChanged<String> onChange;
-  final bool isPassword;
   final String text;
-  final bool isNumber;
-  final bool isPhoneNumber;
+  final String value;
   final bool isRequiredFeild;
-  const RoundedTextFeild({
+  const SearchDoctorTextField({
     Key key,
     this.onChange,
-    this.isPassword,
-    this.isNumber,
+    this.value,
     this.text,
-    this.isPhoneNumber = false,
     this.isRequiredFeild,
   }) : super(key: key);
   @override
-  _RoundedTextFeildState createState() => _RoundedTextFeildState(
-        isNumber: isNumber,
-        isPassword: isPassword,
-        isPhoneNumber: isPhoneNumber,
+  _SearchDoctorTextFieldState createState() => _SearchDoctorTextFieldState(
         onChange: onChange,
         text: text,
+        value: value,
         isRequiredFeild: isRequiredFeild,
       );
 }
 
-class _RoundedTextFeildState extends State<RoundedTextFeild> {
+class _SearchDoctorTextFieldState extends State<SearchDoctorTextField> {
   final ValueChanged<String> onChange;
-  final bool isPassword;
   final String text;
-  final bool isNumber;
-  final bool isPhoneNumber;
+  final String value;
   final bool isRequiredFeild;
   bool _isFieldValid;
-  bool _isObscure = true;
-  _RoundedTextFeildState({
+  _SearchDoctorTextFieldState({
     Key key,
     this.onChange,
-    this.isPassword,
-    this.isNumber,
+    this.value,
     this.text,
-    this.isPhoneNumber = false,
     this.isRequiredFeild,
   });
   @override
@@ -55,8 +45,8 @@ class _RoundedTextFeildState extends State<RoundedTextFeild> {
           Text(
             text,
             style: TextStyle(
-              fontFamily: 'Larsseit',
-              fontSize: 18,
+              fontFamily: FONT_FAMILY_PRIMARY,
+              fontSize: 14,
               fontWeight: FontWeight.normal,
             ),
             textAlign: TextAlign.left,
@@ -64,8 +54,9 @@ class _RoundedTextFeildState extends State<RoundedTextFeild> {
           SizedBox(
             height: size.height * 0.005,
           ),
-          TextFieldContainer(
+          SearchDoctorTextFieldContainer(
             child: TextFormField(
+              initialValue: value,
               validator: (value) {
                 if (value.isEmpty) {
                   setState(() {
@@ -79,28 +70,16 @@ class _RoundedTextFeildState extends State<RoundedTextFeild> {
                   return null;
                 }
               },
-              obscureText: isPassword ? _isObscure : false,
-              maxLength: isPhoneNumber ? 10 : 200,
-              keyboardType:
-                  isNumber ? TextInputType.number : TextInputType.text,
-              style: TextStyle(fontFamily: 'Larsseit', fontSize: 20),
+              maxLength: 100,
+              keyboardType: TextInputType.text,
+              style: TextStyle(
+                fontFamily: FONT_FAMILY_PRIMARY,
+                fontSize: 16,
+              ),
               onChanged: onChange,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 counterText: '',
-                suffixIcon: isPassword
-                    ? IconButton(
-                        icon: Icon(
-                          _isObscure ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.red[600],
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        },
-                      )
-                    : null,
               ),
             ),
           ),
@@ -109,12 +88,13 @@ class _RoundedTextFeildState extends State<RoundedTextFeild> {
                   _isFieldValid != null &&
                   !_isFieldValid
               ? Padding(
-                  padding: EdgeInsets.only(left: 15),
+                  padding: EdgeInsets.only(left: 5),
                   child: Text(
-                    text + ' is required!',
+                    text + ' is required.',
                     style: TextStyle(
                       color: Colors.red[800],
-                      fontFamily: 'Larsseit',
+                      fontFamily: FONT_FAMILY_PRIMARY,
+                      fontSize: 15,
                     ),
                   ),
                 )
@@ -128,20 +108,19 @@ class _RoundedTextFeildState extends State<RoundedTextFeild> {
   }
 }
 
-class TextFieldContainer extends StatelessWidget {
+class SearchDoctorTextFieldContainer extends StatelessWidget {
   final Widget child;
-  const TextFieldContainer({Key key, this.child}) : super(key: key);
+  const SearchDoctorTextFieldContainer({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 1),
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 1.5),
       width: size.width * 0.9,
       height: 50,
       decoration: BoxDecoration(
-          color: Colors.grey[300], borderRadius: BorderRadius.circular(30)),
+          color: Colors.grey[300], borderRadius: BorderRadius.circular(8)),
       child: child,
     );
   }
