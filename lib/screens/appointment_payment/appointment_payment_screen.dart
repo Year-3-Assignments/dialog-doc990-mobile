@@ -1,24 +1,18 @@
-import 'package:dialog_doc990_mobile/providers/search_doctor_provider.dart';
 import 'package:dialog_doc990_mobile/providers/user_provider.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctor_form.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctors.dart';
+import 'package:dialog_doc990_mobile/screens/appointment_payment/appointment_payment_form.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchDoctorScreen extends StatefulWidget {
+class AppointmentPaymentScreen extends StatefulWidget {
   @override
-  _SearchDoctorScreenState createState() => _SearchDoctorScreenState();
+  _AppointmentPaymentScreenState createState() =>
+      _AppointmentPaymentScreenState();
 }
 
-class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
+class _AppointmentPaymentScreenState extends State<AppointmentPaymentScreen> {
   final _scaffoldKey =
-      GlobalKey<ScaffoldState>(debugLabel: 'channelDoctorScreenKey');
-
-  @override
-  void didUpdateWidget(SearchDoctorScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
+      GlobalKey<ScaffoldState>(debugLabel: 'appointmentPaymentScreenKey');
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +21,9 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
+      resizeToAvoidBottomInset: true,
       drawer: Container(
-        width: size.width * 0.7,
+        width: size.width * 0.8,
         child: Drawer(
           elevation: 0.0,
           child: HomeNavigationMenu(),
@@ -37,21 +32,15 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: SeachDoctorFormScreen(),
-                  ),
-                ],
-              ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 90, left: 10),
+              child: AppointmentPaymentContent(),
             ),
           ),
           Container(
             height: size.height * 0.12,
             decoration: BoxDecoration(
-              color: Color(0xfffafafa),
+              color: Colors.white,
             ),
             child: Stack(
               children: [
@@ -86,7 +75,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Search Your Doctor',
+                          'Make Your Payment',
                           style: TextStyle(
                             fontFamily: 'Larsseit',
                             fontSize: 17,

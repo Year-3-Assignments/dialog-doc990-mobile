@@ -1,24 +1,17 @@
-import 'package:dialog_doc990_mobile/providers/search_doctor_provider.dart';
 import 'package:dialog_doc990_mobile/providers/user_provider.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctor_form.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctors.dart';
+import 'package:dialog_doc990_mobile/screens/appointments/appointment_content.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchDoctorScreen extends StatefulWidget {
+class AppointmentScreen extends StatefulWidget {
   @override
-  _SearchDoctorScreenState createState() => _SearchDoctorScreenState();
+  _AppointmentScreenState createState() => _AppointmentScreenState();
 }
 
-class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
+class _AppointmentScreenState extends State<AppointmentScreen> {
   final _scaffoldKey =
       GlobalKey<ScaffoldState>(debugLabel: 'channelDoctorScreenKey');
-
-  @override
-  void didUpdateWidget(SearchDoctorScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +35,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(top: 100),
-                    child: SeachDoctorFormScreen(),
+                    child: AppointmentContent(),
                   ),
                 ],
               ),
@@ -86,7 +79,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Search Your Doctor',
+                          'Appointments',
                           style: TextStyle(
                             fontFamily: 'Larsseit',
                             fontSize: 17,

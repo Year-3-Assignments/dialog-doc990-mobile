@@ -2,21 +2,20 @@ import 'package:dialog_doc990_mobile/constants.dart';
 import 'package:dialog_doc990_mobile/models/doctor_model.dart';
 import 'package:dialog_doc990_mobile/providers/search_doctor_provider.dart';
 import 'package:dialog_doc990_mobile/providers/user_provider.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctor_form.dart';
+import 'package:dialog_doc990_mobile/screens/appointment-summary/appointment_sumamry_content.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_navigation_menu.dart';
-import 'package:dialog_doc990_mobile/screens/make_appointment/make_appointment_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MakeAppointmentScreen extends StatefulWidget {
+class AppointmentSummary extends StatefulWidget {
   @override
-  _MakeAppointmentScreenState createState() => _MakeAppointmentScreenState();
+  _AppointmentSummaryState createState() => _AppointmentSummaryState();
 }
 
-class _MakeAppointmentScreenState extends State<MakeAppointmentScreen> {
+class _AppointmentSummaryState extends State<AppointmentSummary> {
   Doctor doctor;
   final _scaffoldKey =
-      GlobalKey<ScaffoldState>(debugLabel: 'channelDoctorScreenKey');
+      GlobalKey<ScaffoldState>(debugLabel: 'appointmentSummaryScreenKey');
 
   @override
   void initState() {
@@ -56,8 +55,8 @@ class _MakeAppointmentScreenState extends State<MakeAppointmentScreen> {
                               borderRadius: BorderRadius.circular(15),
                               child: Image.network(
                                 doctor.imageUrl,
-                                width: 90,
-                                height: 90,
+                                width: 100,
+                                height: 100,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -121,7 +120,9 @@ class _MakeAppointmentScreenState extends State<MakeAppointmentScreen> {
                     ),
                   ),
                   Row(
-                    children: <Widget>[MakeAppointmentForm()],
+                    children: <Widget>[
+                      AppointmentSummaryContent(),
+                    ],
                   ),
                 ],
               ),
@@ -165,7 +166,7 @@ class _MakeAppointmentScreenState extends State<MakeAppointmentScreen> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Make Your Appointment',
+                          'Appointment Summary',
                           style: TextStyle(
                             fontFamily: 'Larsseit',
                             fontSize: 17,

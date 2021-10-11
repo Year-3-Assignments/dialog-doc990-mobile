@@ -1,10 +1,14 @@
+import 'package:dialog_doc990_mobile/screens/appointment-summary/appointment_summary_screen.dart';
+import 'package:dialog_doc990_mobile/screens/appointments/appointment_screen.dart';
 import 'package:dialog_doc990_mobile/screens/channel_doctor/channel_doctor_screen.dart';
 import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctors.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_screen.dart';
 import 'package:dialog_doc990_mobile/screens/login/login_screen.dart';
+import 'package:dialog_doc990_mobile/screens/appointment_payment/appointment_payment_screen.dart';
 import 'package:dialog_doc990_mobile/screens/make_appointment/make_appointment_screen.dart';
-import 'package:dialog_doc990_mobile/screens/refund/refund_page.dart';
-import 'package:dialog_doc990_mobile/screens/refund/refund_screen.dart';
+import 'package:dialog_doc990_mobile/screens/profile/profile_screen.dart';
+import 'package:dialog_doc990_mobile/screens/refund_request/refund_screen.dart';
+import 'package:dialog_doc990_mobile/screens/refunds/refunds_screen.dart';
 import 'package:dialog_doc990_mobile/screens/signup/signup_screen_1.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -59,6 +63,15 @@ class RouteGenerator {
             child: c,
           ),
         );
+      case '/refund-screen':
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => RefundScreen(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
       case '/make-appointment':
         return PageRouteBuilder(
           settings: settings,
@@ -72,6 +85,42 @@ class RouteGenerator {
         return PageRouteBuilder(
           settings: settings,
           pageBuilder: (_, __, ___) => SearchedDoctors(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
+      case '/appointment-summary':
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => AppointmentSummary(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
+      case '/payment':
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => AppointmentPaymentScreen(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
+      case '/profile':
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => UserProfile(),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(
+            opacity: a,
+            child: c,
+          ),
+        );
+      case '/appointments':
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => AppointmentScreen(),
           transitionsBuilder: (_, a, __, c) => FadeTransition(
             opacity: a,
             child: c,

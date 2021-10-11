@@ -3,22 +3,18 @@ import 'package:dialog_doc990_mobile/providers/user_provider.dart';
 import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctor_form.dart';
 import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctors.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_navigation_menu.dart';
+import 'package:dialog_doc990_mobile/screens/profile/profile_content.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchDoctorScreen extends StatefulWidget {
+class UserProfile extends StatefulWidget {
   @override
-  _SearchDoctorScreenState createState() => _SearchDoctorScreenState();
+  _UserProfileState createState() => _UserProfileState();
 }
 
-class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
+class _UserProfileState extends State<UserProfile> {
   final _scaffoldKey =
       GlobalKey<ScaffoldState>(debugLabel: 'channelDoctorScreenKey');
-
-  @override
-  void didUpdateWidget(SearchDoctorScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +24,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Container(
-        width: size.width * 0.7,
+        width: size.width * 0.8,
         child: Drawer(
           elevation: 0.0,
           child: HomeNavigationMenu(),
@@ -38,13 +34,9 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
         children: <Widget>[
           SingleChildScrollView(
             child: Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: SeachDoctorFormScreen(),
-                  ),
-                ],
+              child: Padding(
+                padding: EdgeInsets.only(top: 100),
+                child: ProfileContent(),
               ),
             ),
           ),
@@ -86,7 +78,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Search Your Doctor',
+                          'My Profile',
                           style: TextStyle(
                             fontFamily: 'Larsseit',
                             fontSize: 17,

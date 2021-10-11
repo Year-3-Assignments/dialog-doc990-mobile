@@ -1,24 +1,12 @@
-import 'package:dialog_doc990_mobile/providers/search_doctor_provider.dart';
+import 'package:dialog_doc990_mobile/constants.dart';
 import 'package:dialog_doc990_mobile/providers/user_provider.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctor_form.dart';
-import 'package:dialog_doc990_mobile/screens/channel_doctor/search_doctors.dart';
 import 'package:dialog_doc990_mobile/screens/home/home_navigation_menu.dart';
+import 'package:dialog_doc990_mobile/screens/refunds/refund_content.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchDoctorScreen extends StatefulWidget {
-  @override
-  _SearchDoctorScreenState createState() => _SearchDoctorScreenState();
-}
-
-class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
-  final _scaffoldKey =
-      GlobalKey<ScaffoldState>(debugLabel: 'channelDoctorScreenKey');
-
-  @override
-  void didUpdateWidget(SearchDoctorScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
+class RefundScreen extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>(debugLabel: 'refundScreen');
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +15,9 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
+      resizeToAvoidBottomInset: true,
       drawer: Container(
-        width: size.width * 0.7,
+        width: size.width * 0.8,
         child: Drawer(
           elevation: 0.0,
           child: HomeNavigationMenu(),
@@ -36,22 +25,21 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
       ),
       body: Stack(
         children: <Widget>[
-          SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 100),
-                    child: SeachDoctorFormScreen(),
-                  ),
-                ],
-              ),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: 100),
+                  child: RefundContent(),
+                ),
+              ],
             ),
           ),
           Container(
             height: size.height * 0.12,
             decoration: BoxDecoration(
-              color: Color(0xfffafafa),
+              color: Colors.white,
             ),
             child: Stack(
               children: [
@@ -86,7 +74,7 @@ class _SearchDoctorScreenState extends State<SearchDoctorScreen> {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          'Search Your Doctor',
+                          'Refund Requests',
                           style: TextStyle(
                             fontFamily: 'Larsseit',
                             fontSize: 17,
